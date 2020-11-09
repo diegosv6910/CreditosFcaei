@@ -9,10 +9,6 @@
         <servlet-class>Controller.controlCreditos</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>postModificarEliminarEventos</servlet-name>
-        <servlet-class>adminController.postCrearEventos</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>preModficarEliminarEventos</servlet-name>
         <servlet-class>adminController.preModficarEliminarEventos</servlet-class>
     </servlet>
@@ -92,6 +88,10 @@
         <servlet-name>postListaTalleres</servlet-name>
         <servlet-class>docenteController.postListaTalleres</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>postCrearEventos</servlet-name>
+        <servlet-class>adminController.postCrearEventos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>controlEventos</servlet-name>
         <url-pattern>/controlEventos</url-pattern>
@@ -99,10 +99,6 @@
     <servlet-mapping>
         <servlet-name>controlCreditos</servlet-name>
         <url-pattern>/controlCreditos</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>postModificarEliminarEventos</servlet-name>
-        <url-pattern>/postModificarEliminarEventos</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>preModficarEliminarEventos</servlet-name>
@@ -183,6 +179,10 @@
     <servlet-mapping>
         <servlet-name>postListaTalleres</servlet-name>
         <url-pattern>/postListaTalleres</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>postCrearEventos</servlet-name>
+        <url-pattern>/postCrearEventos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

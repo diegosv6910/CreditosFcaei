@@ -35,10 +35,10 @@ public class postCrearEventos extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet postModificarEliminarEventos</title>");            
+            out.println("<title>Servlet postCrearEventos</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet postModificarEliminarEventos at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet postCrearEventos at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
