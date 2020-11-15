@@ -1,32 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package adminController;
 
+import DAO.ListaDAO;
+import DAO.TalleresDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Talleres;
 
-/**
- *
- * @author diego
- */
 public class postCrearTalleres extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -70,7 +59,26 @@ public class postCrearTalleres extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String nombreTaller = request.getParameter("txtNombreTaller");
+        int idDocente = parseInt(request.getParameter("txtIDProfesor"));
+        String horario = request.getParameter("txtHorario");
+        String ubicacion = request.getParameter("txtUbicacion");
+        String costo = request.getParameter("txtCosto");
+        String descripcion = request.getParameter("txtDescripcion");
+        Talleres.setNombre_Taller(nombreTaller);
+        Talleres.setID_Docente(idDocente);
+        Talleres.setHorario(horario);
+        Talleres.setUbicacion(ubicacion);
+        Talleres.setCosto(costo);
+        Talleres.setDescripcion_Taller(descripcion);
+        TalleresDAO objDao = new TalleresDAO();
+        ListaDAO objLS = new ListaDAO();
+        try {
+            objDao.Insertar();
+            objLS.Insertar();
+        } catch (SQLException ex) {
+            Logger.getLogger(postCrearTalleres.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

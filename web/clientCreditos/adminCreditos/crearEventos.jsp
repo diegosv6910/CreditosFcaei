@@ -6,7 +6,7 @@
         <title>Creacion Eventos</title>
     </head>
     <body>
-        <h1>Registro de eventos y talleres.</h1>
+        <h1>Registro de eventos.</h1>
         <form method="post" action="/Creditos/postCrearEventos">
             <label for="Nombre Evento">Nombre_Evento</label>
             <input type="text" name="txtNombreEvento" placeholder="Nombre Evento"  /> 

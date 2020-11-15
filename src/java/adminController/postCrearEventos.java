@@ -5,12 +5,18 @@
  */
 package adminController;
 
+import DAO.EventosDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Eventos;
 
 /**
  *
@@ -35,7 +41,7 @@ public class postCrearEventos extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet postCrearEventos</title>");            
+            out.println("<title>Servlet postCrearEventos</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet postCrearEventos at " + request.getContextPath() + "</h1>");
@@ -70,16 +76,42 @@ public class postCrearEventos extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
+        String nombreEvento = request.getParameter("txtNombreEvento");
+        int idInstitucion = parseInt(request.getParameter("txtIDInstitucion"));
+        System.out.println(idInstitucion);
+        String fechaInicio = request.getParameter("txtFechaInicio");
+        String fechaFin = request.getParameter("txtFechaFinal");
+        String Horario = request.getParameter("txtHorario");
+        int tipoEvento = parseInt(request.getParameter("txtTipoEvento"));
+        System.out.println(tipoEvento);
+        int programaLic = parseInt(request.getParameter("txtIDLicenciatura"));
+        System.out.println(programaLic);
+        String Descripcion = request.getParameter("txtDescripcion");
+        Eventos objEventos = new Eventos();
+        objEventos.setNombreEvento(nombreEvento);
+        objEventos.setIdInstitucion(idInstitucion);
+        objEventos.setFechaInicio(fechaInicio);
+        objEventos.setFechaFin(fechaFin);
+        objEventos.setHorario(Horario);
+        objEventos.setTipoEvento(tipoEvento);
+        objEventos.setProgramaLic(programaLic);
+        objEventos.setDescripcion(Descripcion);
+        EventosDAO objDAOEventos = new EventosDAO();
+        try {
+            objDAOEventos.Insertar();
+        } catch (SQLException ex) {
+            Logger.getLogger(postCrearEventos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+}
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
+/**
+ * Returns a short description of the servlet.
+ *
+ * @return a String containing servlet description
+ */
+@Override
+        public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
