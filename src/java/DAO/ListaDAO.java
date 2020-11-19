@@ -16,31 +16,37 @@ public class ListaDAO {
         con = Conexion.getConnection();//crear una conexión al crear un objeto AdminDAO
         try {
 
-            PreparedStatement pstm = null;
+
             PreparedStatement pstm1 = null;
             ResultSet rs = null;
-            String s1 = "INSERT INTO lista_talleres (ID_Taller, Matricula1, Matricula2, Matricula3, Matricula4, Matricula5, ID_Docente) VALUES(?, ? ,?, ?, ?, ?, ?)";
             String s2 = "select * from proyecto.talleres order by ID_Taller desc limit 1;";
             pstm1 = con.prepareStatement(s2);
             rs = pstm1.executeQuery(s2);
             while (rs.next()) {
                 ListaAsistencia.setID_Taller(rs.getInt("ID_Taller"));
                 ListaAsistencia.setID_Docente(rs.getInt("ID_Docente"));
+                InsertarLista();
+                System.out.println("Llamamos a Insertar Lista");
             }
-            int idtaller = ListaAsistencia.getID_Taller();
-            int iddocente = ListaAsistencia.getID_Docente();
-            pstm = con.prepareStatement(s1);
-            System.out.println("Desde aqui "+idtaller);
-            System.out.println("Desde aqui "+iddocente);
-            pstm.setInt(1, ListaAsistencia.getID_Taller());
-            pstm.setNull(2, java.sql.Types.INTEGER);
-            pstm.setNull(3, java.sql.Types.INTEGER);
-            pstm.setNull(4, java.sql.Types.INTEGER);
-            pstm.setNull(5, java.sql.Types.INTEGER);
-            pstm.setNull(6, java.sql.Types.INTEGER);
-            pstm.setInt(7, ListaAsistencia.getID_Docente());
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
+    
+        public void InsertarLista() throws SQLException {
+        con = Conexion.getConnection();//crear una conexión al crear un objeto AdminDAO
+        try {
+            String s1 = "insert into lista_talleres (ID_Taller, ID_Docente) values (?, ?);";
+            PreparedStatement pstm = null;
+            int idtaller = ListaAsistencia.getID_Taller();
+            int iddocente = ListaAsistencia.getID_Docente();
+            pstm = con.prepareStatement(s1);
+            System.out.println("Desde InsertarLista "+idtaller);
+            System.out.println("Desde InsertarLista "+iddocente);
+            pstm.setInt(1, ListaAsistencia.getID_Taller());
+            pstm.setInt(2, ListaAsistencia.getID_Docente());
+        } catch (SQLException e) {
+            System.out.println(e);
+        }  
+        } 
 }
