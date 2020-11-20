@@ -34,6 +34,7 @@ public class EventosDAO {
             pstm.setString(5, E.getHorario());
             pstm.setInt(6, E.getTipoEvento());
             pstm.setInt(7, E.getProgramaLic());
+            System.out.println(E.getProgramaLic());
             pstm.setString(8, E.getDescripcion());
             int filas = pstm.executeUpdate();
         } catch (SQLException e) {
