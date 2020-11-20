@@ -65,7 +65,6 @@ public class postModificarEliminarEventos extends HttpServlet {
             System.out.println("Hola");
             EventosDAO dao = new EventosDAO();
             dao.eliminar(id_e);
-            request.getRequestDispatcher("/Creditos/adminCreditos/modificarEliminarEventos.jsp").forward(request, response);
         }
     }
 
