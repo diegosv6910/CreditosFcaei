@@ -3,14 +3,27 @@ package model;
 public class Eventos {
     
 static private int ID_Evento;    
-static private String nombreEvento;
-static private int idInstitucion;
-static private String fechaInicio;
-static private String fechaFin;
-static private String Horario;
-static private int tipoEvento;
-static private int programaLic;
-static private String Descripcion;
+private String nombreEvento;
+private int idInstitucion;
+private String fechaInicio;
+private String fechaFin;
+private String Horario;
+private int tipoEvento;
+private int programaLic;
+private String Descripcion;
+
+
+    public Eventos(){
+        
+    }
+    
+    public Eventos(String nombre_evento, String fecha_i, String fecha_f, String horario, String descripcion){
+        this.nombreEvento = nombre_evento;
+        this.fechaInicio = fecha_i;
+        this.fechaFin = fecha_f;
+        this.Horario = horario;
+        this.Descripcion = descripcion;
+    }
 
     public static int getID_Evento() {
         return ID_Evento;
@@ -20,13 +33,12 @@ static private String Descripcion;
         Eventos.ID_Evento = ID_Evento;
     }
 
-
     public String getNombreEvento() {
         return nombreEvento;
     }
 
     public void setNombreEvento(String nombreEvento) {
-        Eventos.nombreEvento = nombreEvento;
+        this.nombreEvento = nombreEvento;
     }
 
     public int getIdInstitucion() {
@@ -34,7 +46,7 @@ static private String Descripcion;
     }
 
     public void setIdInstitucion(int idInstitucion) {
-        Eventos.idInstitucion = idInstitucion;
+        this.idInstitucion = idInstitucion;
     }
 
     public String getFechaInicio() {
@@ -42,7 +54,7 @@ static private String Descripcion;
     }
 
     public void setFechaInicio(String fechaInicio) {
-        Eventos.fechaInicio = fechaInicio;
+        this.fechaInicio = fechaInicio;
     }
 
     public String getFechaFin() {
@@ -50,7 +62,7 @@ static private String Descripcion;
     }
 
     public void setFechaFin(String fechaFin) {
-        Eventos.fechaFin = fechaFin;
+        this.fechaFin = fechaFin;
     }
 
     public String getHorario() {
@@ -58,7 +70,7 @@ static private String Descripcion;
     }
 
     public void setHorario(String Horario) {
-        Eventos.Horario = Horario;
+        this.Horario = Horario;
     }
 
     public int getTipoEvento() {
@@ -66,7 +78,7 @@ static private String Descripcion;
     }
 
     public void setTipoEvento(int tipoEvento) {
-        Eventos.tipoEvento = tipoEvento;
+        this.tipoEvento = tipoEvento;
     }
 
     public int getProgramaLic() {
@@ -74,7 +86,7 @@ static private String Descripcion;
     }
 
     public void setProgramaLic(int programaLic) {
-        Eventos.programaLic = programaLic;
+        this.programaLic = programaLic;
     }
 
     public String getDescripcion() {
@@ -82,8 +94,9 @@ static private String Descripcion;
     }
 
     public void setDescripcion(String Descripcion) {
-        Eventos.Descripcion = Descripcion;
+        this.Descripcion = Descripcion;
     }
+
 
 
 }

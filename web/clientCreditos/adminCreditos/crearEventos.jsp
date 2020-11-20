@@ -86,11 +86,32 @@
                 <label for="exampleFormControlTextarea1">Example textarea</label>
                 <textarea name="txtDescripcion" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
-            <input class="btn btn-primary" type="submit" value="Input">
+            <input class="btn btn-primary"  value="Enviar" data-toggle="modal" data-target="#myModal">
+            
+            <div class="modal" tabindex="-1" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Confirmacion.</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>¿Estas seguro de querer insertar este Evento?.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar.</button>
+                            <button type="submit" class="btn btn-primary">Confirmar.</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
 
 
 
+        <script src="/Creditos/javaScript/script.js"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
                 integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>

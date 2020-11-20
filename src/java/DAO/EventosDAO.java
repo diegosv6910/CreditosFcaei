@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import model.Eventos;
 import util.Conexion;
 
@@ -14,6 +15,10 @@ public class EventosDAO {
     private Connection con = null;//variable para la conexion a la BD
     Eventos E = new Eventos();
 
+    public EventosDAO(){
+        con = Conexion.getConnection();
+    }
+    
     public void Insertar() throws SQLException {
         con = Conexion.getConnection();//crear una conexión al crear un objeto AdminDAO
         try {
@@ -34,6 +39,23 @@ public class EventosDAO {
         } catch (SQLException e) {
             System.out.println(e);
         }
+    }
+    
+    public List<Eventos> Listar(){
+        List<Eventos> datos = new ArrayList<>();
+        PreparedStatement pstm = null; 
+        ResultSet rs = null;
+        String sql = "select * from proyecto.eventos";
+        try{
+            pstm = con.prepareStatement(sql);
+            rs = pstm.executeQuery();
+            while(rs.next()){
+                datos.add(new Eventos(rs.getString("Nombre_Evento"),rs.getString("Fecha_Inicio"),rs.getString("Fecha_Fin"),rs.getString("Horario"),rs.getString("Descripcion_Evento")));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return datos;
     }
 
 }
