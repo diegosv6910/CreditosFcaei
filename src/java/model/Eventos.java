@@ -3,14 +3,14 @@ package model;
 public class Eventos {
     
 static private int ID_Evento;    
-private String nombreEvento;
-private int idInstitucion;
-private String fechaInicio;
-private String fechaFin;
-private String Horario;
-private int tipoEvento;
-private int programaLic;
-private String Descripcion;
+static private String nombreEvento;
+static private int idInstitucion;
+static private String fechaInicio;
+static private String fechaFin;
+static private String Horario;
+static private int tipoEvento;
+static private int programaLic;
+static private String Descripcion;
 
 
     public Eventos(){
