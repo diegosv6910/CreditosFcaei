@@ -25,16 +25,18 @@
             for (Eventos E : datos) {
         %>
 
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center" >
             <div class="p-2">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
-                        <h5 class="card-title"><%= E.getNombreEvento()%></h5>
+                        <h5 class="card-title" name="ID"><%= E.getID_Evento() %></h5>
+                        <h5 class="card-title" name="nombre_evento"><%= E.getNombreEvento()%></h5>
                         <h6 class="card-subtitle mb-2 text-muted"><%= E.getFechaInicio()%></h6>
                         <h6 class="card-subtitle mb-2 text-muted"><%= E.getFechaFin()%></h6>
                         <h6 class="card-subtitle mb-2 text-muted"><%= E.getHorario()%></h6>
                         <p class="card-text"><%= E.getDescripcion()%></p>
-                        <a href="#" class="card-link">Inscribirme</a>
+                        <a href="/Creditos/postModificarEliminarEventos?accion=eliminar&idE=<%= E.getID_Evento()%>"class="card-link">Eliminar</a>
+                        <a href="#" class="card-link">Modificar</a>
                     </div>
                 </div>
             </div>

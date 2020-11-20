@@ -2,7 +2,7 @@ package model;
 
 public class Eventos {
     
-static private int ID_Evento;    
+private int ID_Evento;    
 private String nombreEvento;
 private int idInstitucion;
 private String fechaInicio;
@@ -17,21 +17,23 @@ private String Descripcion;
         
     }
     
-    public Eventos(String nombre_evento, String fecha_i, String fecha_f, String horario, String descripcion){
+    public Eventos(String nombre_evento, String fecha_i, String fecha_f, String horario, String descripcion, int id){
         this.nombreEvento = nombre_evento;
         this.fechaInicio = fecha_i;
         this.fechaFin = fecha_f;
         this.Horario = horario;
         this.Descripcion = descripcion;
+        this.ID_Evento = id;
     }
 
-    public static int getID_Evento() {
+    public int getID_Evento() {
         return ID_Evento;
     }
 
-    public static void setID_Evento(int ID_Evento) {
-        Eventos.ID_Evento = ID_Evento;
+    public void setID_Evento(int ID_Evento) {
+        this.ID_Evento = ID_Evento;
     }
+
 
     public String getNombreEvento() {
         return nombreEvento;

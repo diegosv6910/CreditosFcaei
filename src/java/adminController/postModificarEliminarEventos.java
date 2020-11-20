@@ -5,6 +5,7 @@
  */
 package adminController;
 
+import DAO.EventosDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -37,7 +38,7 @@ public class postModificarEliminarEventos extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet postModificarEliminarEventos</title>");            
+            out.println("<title>Servlet postModificarEliminarEventos</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet postModificarEliminarEventos at " + request.getContextPath() + "</h1>");
@@ -58,22 +59,31 @@ public class postModificarEliminarEventos extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String action = request.getParameter("accion");
+        if (action.equalsIgnoreCase("eliminar")) {
+            int id_e = Integer.parseInt(request.getParameter("idE"));
+            System.out.println("Hola");
+            EventosDAO dao = new EventosDAO();
+            dao.eliminar(id_e);
+            request.getRequestDispatcher("/Creditos/adminCreditos/modificarEliminarEventos.jsp").forward(request, response);
+        }
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        /**
+         * Handles the HTTP <code>POST</code> method.
+         *
+         * @param request servlet request
+         * @param response servlet response
+         * @throws ServletException if a servlet-specific error occurs
+         * @throws IOException if an I/O error occurs
+         */
+        @Override
+        protected void doPost
+        (HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
+            processRequest(request, response);
+        }
+
 
     /**
      * Returns a short description of the servlet.

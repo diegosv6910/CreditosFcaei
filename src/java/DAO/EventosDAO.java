@@ -15,14 +15,14 @@ public class EventosDAO {
     private Connection con = null;//variable para la conexion a la BD
     Eventos E = new Eventos();
 
-    public EventosDAO(){
+    public EventosDAO() {
         con = Conexion.getConnection();
     }
-    
+
     public void Insertar() throws SQLException {
         con = Conexion.getConnection();//crear una conexión al crear un objeto AdminDAO
         try {
-            
+
             PreparedStatement pstm = null;
             ResultSet rs = null;
             String s1 = "INSERT INTO eventos (Nombre_Evento, ID_Institucion, Fecha_Inicio, Fecha_Fin, Horario, Tipo_Evento, ID_ProgramaLic, Descripcion_Evento) VALUES(?,?,?,?,?,?,?,?)";
@@ -35,27 +35,40 @@ public class EventosDAO {
             pstm.setInt(6, E.getTipoEvento());
             pstm.setInt(7, E.getProgramaLic());
             pstm.setString(8, E.getDescripcion());
-            int filas = pstm.executeUpdate();
+            pstm.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
-    
-    public List<Eventos> Listar(){
+
+    public List<Eventos> Listar() {
         List<Eventos> datos = new ArrayList<>();
-        PreparedStatement pstm = null; 
+        PreparedStatement pstm = null;
         ResultSet rs = null;
         String sql = "select * from proyecto.eventos";
-        try{
+        try {
             pstm = con.prepareStatement(sql);
             rs = pstm.executeQuery();
-            while(rs.next()){
-                datos.add(new Eventos(rs.getString("Nombre_Evento"),rs.getString("Fecha_Inicio"),rs.getString("Fecha_Fin"),rs.getString("Horario"),rs.getString("Descripcion_Evento")));
+            while (rs.next()) {
+                datos.add(new Eventos(rs.getString("Nombre_Evento"), rs.getString("Fecha_Inicio"), rs.getString("Fecha_Fin"), rs.getString("Horario"), rs.getString("Descripcion_Evento"),rs.getInt("ID_Evento")));
             }
         } catch (SQLException e) {
             System.out.println(e);
         }
         return datos;
+    }
+
+    public void eliminar(int id_e) {
+        con = Conexion.getConnection();//crear una conexión al crear un objeto AdminDAO
+        try {
+
+            PreparedStatement pstm = null;
+            String s1 = "delete from proyecto.eventos where ID_Evento ="+id_e;
+            pstm = con.prepareStatement(s1);
+            pstm.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 
 }
