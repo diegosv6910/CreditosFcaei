@@ -1,9 +1,3 @@
-<%-- 
-    Document   : verEventos
-    Created on : 19 oct 2020, 12:52:11
-    Author     : diego
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
