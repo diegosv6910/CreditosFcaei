@@ -14,7 +14,7 @@ public class EventosDAO {
 
     private Connection con = null;//variable para la conexion a la BD
     Eventos E = new Eventos();
-
+    
     public EventosDAO() {
         con = Conexion.getConnection();
     }
@@ -22,7 +22,7 @@ public class EventosDAO {
     public void Insertar() throws SQLException {
         con = Conexion.getConnection();//crear una conexión al crear un objeto AdminDAO
         try {
-
+            System.out.println("Institucion "+E.getIdInstitucion());
             PreparedStatement pstm = null;
             ResultSet rs = null;
             String s1 = "INSERT INTO eventos (Nombre_Evento, ID_Institucion, Fecha_Inicio, Fecha_Fin, Horario, Tipo_Evento, ID_ProgramaLic, Descripcion_Evento) VALUES(?,?,?,?,?,?,?,?)";

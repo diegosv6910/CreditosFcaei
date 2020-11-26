@@ -7,6 +7,7 @@ package util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 /**
  *
  * @author diego
@@ -42,7 +43,7 @@ public class Conexion {
                 con = DriverManager.getConnection(url,usr,pwd);
             }
             return con;
-        }catch(Exception ex){
+        }catch(ClassNotFoundException | SQLException ex){
             ex.printStackTrace();
             throw new RuntimeException("Error al abrir la conexion",ex);
         }

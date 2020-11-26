@@ -2,15 +2,15 @@ package model;
 
 public class Eventos {
     
-private int ID_Evento;    
-private String nombreEvento;
-private int idInstitucion;
-private String fechaInicio;
-private String fechaFin;
-private String Horario;
-private int tipoEvento;
-private int programaLic;
-private String Descripcion;
+public static int ID_Evento;    
+public static String nombreEvento;
+public static int idInstitucion;
+public static String fechaInicio;
+public static String fechaFin;
+public static String Horario;
+public static int tipoEvento;
+public static int programaLic;
+public static String Descripcion;
 
 
     public Eventos(){
@@ -33,7 +33,6 @@ private String Descripcion;
     public void setID_Evento(int ID_Evento) {
         this.ID_Evento = ID_Evento;
     }
-
 
     public String getNombreEvento() {
         return nombreEvento;
@@ -98,6 +97,8 @@ private String Descripcion;
     public void setDescripcion(String Descripcion) {
         this.Descripcion = Descripcion;
     }
+
+
 
 
 
