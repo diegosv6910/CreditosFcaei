@@ -37,7 +37,7 @@ public class Conexion {
                 String usr="root";
                 String pwd="123456789";
                 String driver="com.mysql.jdbc.Driver";
-                String url="jdbc:mysql://localhost:3307/proyecto?serverTimezone=UTC";
+                String url="jdbc:mysql://localhost:3306/proyecto?serverTimezone=UTC";
                 Class.forName(driver);
                 con = DriverManager.getConnection(url,usr,pwd);
             }
